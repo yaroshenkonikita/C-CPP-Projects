@@ -1,0 +1,294 @@
+#include "decimal/secondary/secondary_f.h"
+char err[] = "error";
+float fl_1 = 15.1, fl_2 = -15.1, fl_3 = -1.1, fl_4 = 2.2, fl_5 = 0;
+int int_1 = 41234, int_2 = -89124724, int_3 = 0b10000000000000000000000000000000, int_4 = 0;
+decimal float_1 = {0}, float_2 = {0}, float_3 = {0}, float_4 = {0};
+decimal integer_1 = {0}, integer_2 = {0}, integer_3 = {0}, integer_4 = {0};
+decimal test_1 = {0}, test_2 = {0}, test_3 = {0}, test_4 = {0}, test_5 = {0};
+
+// // для проверки
+// // вывод decimal по битам
+// // только на стадии разработки
+// #include <stdio.h>
+// void bin_print(decimal *dst) {
+//   printf("| ");
+//   printf("%u", (dst->bits[3] >> 31) & 1);
+//   printf(" | ");
+//   for (int i = 30; i != 23; i--) printf("%u", (dst->bits[3] >> i) & 1);
+//   printf(" | ");
+//   for (int i = 23; i != 15; i--) printf("%u", (dst->bits[3] >> i) & 1);
+//   printf(" | ");
+//   printf("%d", get_scale(*dst));
+//   printf(" | ");
+//   for (int i = 15; i != -1; i--) printf("%u", (dst->bits[3] >> i) & 1);
+//   printf(" |------| ");
+//   for (int i = 0; i < 96; i++) {
+//     printf("%u", getBit(*dst, i));
+//     if (i == 31 || i == 63) {
+//       printf(" | ");
+//     } else if ((i + 1) % 8 == 0) {
+//       printf(" ");
+//     }
+//   }
+//   printf("\n\n");
+// }
+
+#test decimal_complex_test_equals
+    // from_float_to_decimal
+    fail_unless(!from_float_to_decimal(fl_1, &float_1), err); // 15.10000038
+    fail_unless(!from_float_to_decimal(fl_2, &float_2), err); // -15.10000038
+    fail_unless(!from_float_to_decimal(fl_3, &float_3), err); // -1.10000002
+    fail_unless(!from_float_to_decimal(fl_4, &float_4), err); // 2.20000005
+
+    // is_less
+    fail_unless(is_less(float_3, float_1), err); // true -1.10000002 < 15.10000038
+    fail_unless(is_less(float_2, float_3), err); // true -15.10000038 < 15.10000038
+    fail_unless(is_less(float_2, float_3), err); // true -15.10000038 < -1.10000002
+    fail_unless(is_less(float_3, float_4), err); // true -1.10000002 < 2.20000005
+    fail_unless(!is_less(float_4, float_3), err); // false 2.20000005 <= -1.10000002
+
+    // is_less_or_equal
+    fail_unless(is_less_or_equal(float_1, float_1), err); // true 15.10000038 <= 15.10000038
+    fail_unless(is_less_or_equal(float_2, float_3), err); // true -15.10000038 <= 15.10000038
+    fail_unless(is_less_or_equal(float_2, float_3), err); // true -15.10000038 <= -1.10000002
+    fail_unless(is_less_or_equal(float_3, float_4), err); // true -1.10000002 <= 2.20000005
+    fail_unless(!is_less_or_equal(float_4, float_3), err); // false 2.20000005 <= -1.10000002
+
+    // is_greater
+    fail_unless(!is_greater(float_1, float_1), err); // false 15.10000038 > 15.10000038
+    fail_unless(!is_greater(float_2, float_3), err); // false -15.10000038 > 15.10000038
+    fail_unless(!is_greater(float_2, float_3), err); // false -15.10000038 > -1.10000002
+    fail_unless(!is_greater(float_3, float_4), err); // false -1.10000002 > 2.20000005
+    fail_unless(is_greater(float_4, float_3), err); // true 2.20000005 > -1.10000002
+
+    // is_greater_or_equal
+    fail_unless(is_greater_or_equal(float_1, float_1), err); // true 15.10000038 >= 15.10000038
+    fail_unless(!is_greater_or_equal(float_2, float_3), err); // false -15.10000038 >= 15.10000038
+    fail_unless(!is_greater_or_equal(float_2, float_3), err); // false -15.10000038 >= -1.10000002
+    fail_unless(!is_greater_or_equal(float_3, float_4), err); // false -1.10000002 >= 2.20000005
+    fail_unless(is_greater_or_equal(float_4, float_3), err); // true 2.20000005 >= -1.10000002
+
+    // is_equal
+    fail_unless(is_equal(float_1, float_1), err); // true 15.10000038 == 15.10000038
+    fail_unless(!is_equal(float_1, float_3), err); // false -15.10000038 == 15.10000038
+    fail_unless(!is_equal(float_2, float_3), err); // false -15.10000038 == -1.10000002
+    fail_unless(!is_equal(float_3, float_4), err); // false -1.10000002 == 2.20000005
+    fail_unless(!is_equal(float_4, float_3), err); // false 2.20000005 == -1.10000002
+
+    // is_not_equal
+    fail_unless(!is_not_equal(float_1, float_1), err); // false 15.10000038 != 15.10000038
+    fail_unless(is_not_equal(float_1, float_3), err); // true -15.10000038 != 15.10000038
+    fail_unless(is_not_equal(float_2, float_3), err); // true -15.10000038 != -1.10000002
+    fail_unless(is_not_equal(float_3, float_4), err); // true -1.10000002 != 2.20000005
+    fail_unless(is_not_equal(float_4, float_3), err); // true 2.20000005 != -1.10000002
+
+#test decimal_and_int
+    // int -> decimal
+    fail_unless(!from_int_to_decimal(int_1, &integer_1), err); // 41234
+    fail_unless(!from_int_to_decimal(int_2, &integer_2), err); // -89124724
+    fail_unless(!from_int_to_decimal(int_3, &integer_3), err); // INT32_MIN
+    fail_unless(!from_int_to_decimal(int_4, &integer_4), err); // 0
+    
+    // decimal -> int
+    fail_unless(!from_decimal_to_int(integer_3, &int_4) && int_4 == INT32_MIN, err); // true
+    fail_unless(!from_decimal_to_int(integer_1, &int_4) && int_4 == 41234, err); // true
+    fail_unless(!from_decimal_to_int(integer_2, &int_1) && int_1 == -89124724, err); // true
+    fail_unless(from_decimal_to_int(integer_2, NULL), err); // false
+
+    // //decimal -> int floor_h
+    fail_unless(!from_float_to_decimal(fl_1, &float_1), err); // 15.10000038
+    fail_unless(!from_decimal_to_int(float_1, &int_3) && int_3 == 15, err); // true
+
+#test decimal_complex_test_math_and_float
+    // float -> decimal
+    fail_unless(!from_float_to_decimal(fl_1, &float_1), err); // 15.10000038
+    fail_unless(!from_float_to_decimal(fl_2, &float_2), err); // -15.10000038
+    fail_unless(!from_float_to_decimal(fl_3, &float_3), err); // -1.10000002
+    fail_unless(!from_float_to_decimal(fl_4, &float_4), err); // 2.20000005
+
+    // int -> decimal
+    fail_unless(!from_int_to_decimal(int_1, &integer_1), err); // 41234
+    fail_unless(!from_int_to_decimal(int_2, &integer_2), err); // -89124724
+    fail_unless(!from_int_to_decimal(int_3, &integer_3), err); // INT32_MIN
+    fail_unless(!from_int_to_decimal(int_4, &integer_4), err); // 0
+
+    // decimal -> float
+    fail_unless(!from_decimal_to_float(float_2, &fl_5) && fabs(fl_5 + 15.10000038) < 1e-6, err); // fl_5 = -15.10000038
+    fail_unless(!from_decimal_to_float(float_4, &fl_5) && fabs(fl_5 - 2.20000005) < 1e-6, err); // fl_5 = 2.20000005
+
+    // add_h
+    fail_unless(!add_h(float_1, integer_1, &test_1), err); // test_1 = 41249.10000038
+    fail_unless(!add_h(float_2, integer_1, &test_2), err); // test_2 = 41218,89999962
+
+    // sub_h
+    fail_unless(!sub_h(integer_1, float_2, &test_3), err); // test_3 = 41249,10000038
+    fail_unless(!sub_h(integer_3, float_4, &test_4), err); // test_4 = -2147483650,20000005
+
+    // mul_h
+    fail_unless(!mul_h(test_4, test_4, &test_1), err); // test_1 = ~4611686027876316174.7883650200
+    fail_unless(!mul_h(integer_1, float_2, &test_2), err); // test_2 = -622633.4156689200000000
+
+    // add_2
+    fail_unless(!add_h(test_1, test_1, &test_5), err); // test_5 = over
+
+    // mul_2
+    fail_unless(!mul_h(test_1, test_3, &test_1), err); // test_1 = over
+    fail_unless(!mul_h(test_1, test_3, &test_1), err); // test_1 = over
+
+    // sub_2
+    fail_unless(!sub_h(test_5, float_4, &test_5), err); // test_5 = over
+
+    // mod_h
+    fail_unless(!mod_h(integer_1, float_1, &test_3), err); // test_3 = 10.9989626
+    fail_unless(!mod_h(test_2, integer_1, &test_4), err); // test_4 = -4123.41566892
+    fail_unless(mod_h(test_2, integer_4, &integer_4) == 3, err); // err
+    decimal one = {{1, 0, 0, 0}};
+    fail_unless(!mod_h(integer_1, one, &one) && one.bits[LOW] == 0, err); // one = 0
+
+    // decimal -> int
+    fail_unless(!from_decimal_to_int(test_2, &int_4) && int_4 == -622633, err); // true
+    fail_unless(!from_decimal_to_int(test_3, &int_4) && int_4 == 10, err); // true
+    fail_unless(from_decimal_to_int(test_1, &int_4), err); // err over int
+    fail_unless(!from_decimal_to_int(test_4, &int_4) && int_4 == -4123, err); // true
+
+    // negate_h
+    fail_unless(!negate_h(test_2, &test_2) && ((test_2.bits[3] >> 31) ^ 1), err); // test_2 = 622633.4156689200000000
+    fail_unless(!negate_h(test_4, &test_4) && ((test_4.bits[3] >> 31) ^ 1), err); // test_4 = 4123.41566892
+
+    // truncate_h
+    fail_unless(!truncate_h(test_2, &test_2) && test_2.bits[0] == 622633, err); // test_2 = 622633
+    fail_unless(!truncate_h(test_4, &test_4) && test_4.bits[0] == 4123, err); // test_4 = 4123
+
+    // float -> decimal
+    fail_unless(!from_float_to_decimal(15.75, &float_1), err); // float_1 = 15.75
+    fail_unless(!from_float_to_decimal(-15.75, &float_2), err); // float_2 = -15.75
+
+    // floor_h
+    fail_unless(!floor_h(float_1, &float_1) && float_1.bits[0] == 15, err); // float_1 = 15
+    fail_unless(!floor_h(float_2, &float_2) && float_2.bits[0] == 16, err); // float_2 = -16
+
+    // float -> decimal
+    fail_unless(!from_float_to_decimal(15.75, &float_1), err); // float_1 = 15.75
+    fail_unless(!from_float_to_decimal(-15.75, &float_2), err); // float_2 = -15.75
+
+    // round_h
+    fail_unless(!round_h(float_1, &float_1) && float_1.bits[0] == 16, err); // float_1 = 16
+    fail_unless(!round_h(float_2, &float_2) && float_2.bits[0] == 16, err); // float_2 = -16
+
+    // div_h
+    fail_unless(!div_h(float_2, float_1, &float_2), err); // float_2 = -1
+    fail_unless(!div_h(float_1, float_1, &float_1), err); // float_1 = 1
+
+    // truncate_2
+    fail_unless(!truncate_h(float_1, &float_1) && float_1.bits[0] == 1, err); // float_1 = 1
+    fail_unless(!truncate_h(float_2, &float_2) && float_2.bits[0] == 1 && ((float_2.bits[3] >> 31) ^ 0), err); // float_2 = -1
+    
+    // float -> decimal
+    fail_unless(!from_float_to_decimal(15.75, &float_1), err); // float_1 = 15.75
+    fail_unless(!from_float_to_decimal(-15.75, &float_2), err); // float_2 = -15.75
+
+    // div_2
+    fail_unless(!div_h(integer_2, float_1, &float_2), err); // float_2 ~ -5658712.6349206349206349206349206
+    // is decimal 101101101101011111000110000110100010000001000101101001100000010000111001001101001101001101001101 with scale 22
+    // it is 5.6587126349206E+28 without scale => 5.6587126349206E+6 => 5658712.6349206~
+    fail_unless(div_h(float_1, integer_4, &float_1) == 3, err); // err integer_4 is zero
+
+    // truncate_3
+    fail_unless(!truncate_h(float_2, &float_2) && float_2.bits[0] == 5658712 && ((float_2.bits[3] >> 31) ^ 0), err); // float_2 = -5658712
+
+#test decimal_complex_exception_over_max_decimal_and_max_index
+    // float -> decimal
+    fail_unless(!from_float_to_decimal(DECIMAL_MAX_INDEX, &float_1), err); // float_1 = 39614081257132168796771975168
+    fail_unless(!from_float_to_decimal(-DECIMAL_MAX_INDEX, &float_2), err); // float_2 = -39614081257132168796771975168
+    fail_unless(!from_float_to_decimal(15.1, &float_3), err); // float_3 = 15.10000038
+    fail_unless(!from_float_to_decimal(-15.1, &float_4), err); // float_4 = -15.10000038
+    fail_unless(!from_float_to_decimal(pow(2, 92), &integer_1), err); // integer_1 = 19807040628566084398385987584
+    fail_unless(!from_float_to_decimal(-(pow(2, 92)), &integer_2), err); // integer_2 = -19807040628566084398385987584
+    fail_unless(!from_float_to_decimal(0.0001, &test_4), err); // test_4 = 0.0001
+    fail_unless(!from_float_to_decimal(-0.0001, &test_5), err); // test_5 = -0.0001
+
+    // for_test
+    fail_unless(mul_on_ten(integer_1, &integer_3), err); // integer_3 = 19807040628566084398385987584.0
+
+    // add_h
+    fail_unless(!add_h(float_1, float_3, &test_1), err); // float_4 = -15.10000038
+    fail_unless(add_h(float_1, float_1, &test_1) == 1, err); // infinity
+    fail_unless(add_h(float_2, float_2, &test_1) == 2, err); // -infinity
+
+    // mul_h
+    fail_unless(mul_h(float_1, float_1, &test_1) == 1, err); // infinity
+    fail_unless(mul_h(float_2, float_1, &test_1) == 2, err); // -infinity
+
+    // sub_h
+    fail_unless(!sub_h(float_2, float_3, &test_1), err); // float_4 = over
+    fail_unless(sub_h(float_1, float_2, &test_1) == 1, err); // infinity
+    fail_unless(sub_h(float_2, float_1, &test_1) == 2, err); // -infinity
+    fail_unless(!sub_h(integer_3, integer_2, &test_1), err); // посчитать с переполнением
+
+    // div_h
+    fail_unless(div_h(float_1, test_4, &test_4) == 1, err); // infinity
+    fail_unless(div_h(float_1, test_5, &test_5) == 2, err); // -infinity
+
+    // for equals
+    fail_unless(!from_float_to_decimal(0.5, &test_4), err); // test_4 = 0.5
+    fail_unless(!from_float_to_decimal(-0.5, &test_5), err); // test_5 = -0.5
+
+    // equals
+    fail_unless(is_greater(test_4, test_5), err); // true
+    fail_unless(is_less(test_5, test_4), err); // true
+    fail_unless(!is_less(test_4, test_5), err); // false
+    fail_unless(!is_equal(test_5, test_4), err); // false
+
+#test decimal_complex_exception_max_scale_decimal_and_period
+    // 1 / 0,6
+    fail_unless(!from_float_to_decimal(1.0, &test_4), err); // test_4 = 1
+    decimal six_with_scale_1 = {{6,0,0,65536}}, two = {{2,0,0,0}};
+    fail_unless(!div_h(test_4, six_with_scale_1, &test_5), err); // 0,666666666666666666666666666|7 <- 66
+
+    
+    decimal ten = {{10,0,0,0}}/*, hundred = {{10000000,0,0,0}}*/;
+
+    // for visible test
+    // bin_print(&test_5);
+    // div_without_dot(test_5, hundred, NULL, &test_5);
+    // printf("%d\n", test_5.bits[LOW]);
+    div_without_dot(test_5, ten, NULL, &test_5);
+    fail_unless(test_5.bits[LOW] == 7, err); // last num
+    fail_unless(!truncate_h(test_5, &test_5) && test_5.bits[LOW] == 0, err); // 0
+    // printf("%d\n", test_5.bits[LOW]);
+
+    decimal nine_with_max_scale = {{5,0,0,0}}, one_with_max_scale = {{1,0,0,0}};
+    for (int i = 0; i < 28; i++) {
+        mul_on_ten(one_with_max_scale, &one_with_max_scale);
+        mul_on_ten(nine_with_max_scale, &nine_with_max_scale);
+        plusBit(&one_with_max_scale, 0);
+        plusBit(&nine_with_max_scale, 0);
+        plusBit(&nine_with_max_scale, 3);
+    }
+    // one_with_max_scale = 1.1111111111111111111111111111
+    // nine_with_max_scale = 5.9999999999999999999999999999
+    fail_unless(!div_h(one_with_max_scale, two, &test_5), err); // 0,555555555555555555555555555|6 <- 55
+
+    
+    // for visible test
+    // bin_print(&test_5);
+    // div_without_dot(test_5, hundred, NULL, &test_5);
+    // printf("%d\n", test_5.bits[LOW]);
+    div_without_dot(test_5, ten, NULL, &test_5);
+    fail_unless(test_5.bits[LOW] == 6, err); // last num
+    // printf("%d\n", test_5.bits[LOW]);
+
+
+    fail_unless(!div_h(one_with_max_scale, nine_with_max_scale, &test_5), err); // 0,185185185185185185185185185|2 <- 18
+    
+    // for visible test
+    // bin_print(&test_5);
+    // div_without_dot(test_5, hundred, NULL, &test_5);
+    // printf("%d\n", test_5.bits[LOW]);
+    div_without_dot(test_5, ten, NULL, &test_5);
+    fail_unless(test_5.bits[LOW] == 2, err); // last num
+    // printf("%d\n", test_5.bits[LOW]);
+    
+
+
+
