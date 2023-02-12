@@ -1,0 +1,12 @@
+{
+    "tests": [
+        {
+            "number": 0,
+            "name": "cat.part1"
+        },
+        {
+            "number": 1,
+            "name": "grep.part2"
+        }
+    ]
+}
