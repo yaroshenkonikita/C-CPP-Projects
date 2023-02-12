@@ -1,0 +1,66 @@
+#include "calc.h"
+
+double out, x = 0;
+
+#test operators
+s21_calc("2.5+2.5", &out, x);
+ck_assert_double_eq_tol(out, 5.0, 1e-6);
+
+s21_calc("2.5-2.5", &out, x);
+ck_assert_double_eq_tol(out, 0.0, 1e-6);
+
+s21_calc("2*4.25", &out, x);
+ck_assert_double_eq_tol(out, 8.5, 1e-6);
+
+s21_calc("2.5/2.5", &out, x);
+ck_assert_double_eq_tol(out, 1.0, 1e-6);
+
+s21_calc("2^2", &out, x);
+ck_assert_double_eq_tol(out, 4.0, 1e-6);
+
+s21_calc("3m2", &out, x);
+ck_assert_double_eq_tol(out, 1.0, 1e-6);
+
+#test functions
+s21_calc("s(2)", &out, x);
+ck_assert_double_eq_tol(out, 0.9092974268, 1e-6);
+
+s21_calc("c(2)", &out, x);
+ck_assert_double_eq_tol(out, -0.416147, 1e-6);
+
+s21_calc("t(2)", &out, x);
+ck_assert_double_eq_tol(out, -2.18504, 1e-6);
+
+s21_calc("a(1)", &out, x);
+ck_assert_double_eq_tol(out, 0.78539816, 1e-6);
+
+s21_calc("i(1)", &out, x);
+ck_assert_double_eq_tol(out, 1.57079632679, 1e-6);
+
+s21_calc("o(1)", &out, x);
+ck_assert_double_eq_tol(out, 0.0, 1e-6);
+
+s21_calc("q(4)", &out, x);
+ck_assert_double_eq_tol(out, 2.0, 1e-6);
+
+s21_calc("g(2)", &out, x);
+ck_assert_double_eq_tol(out, 0.3010299956, 1e-6);
+
+s21_calc("l(2)", &out, x);
+ck_assert_double_eq_tol(out, 0.6931471805, 1e-6);
+
+#test unars
+s21_calc("2*-2", &out, x);
+ck_assert_double_eq_tol(out, -4.0, 1e-6);
+
+s21_calc("-f*(+e*x)", &out, x);
+ck_assert_double_eq_tol(out, 0.0, 1e-6);
+
+#test errors
+fail_unless(s21_calc("1/0", &out, x));
+fail_unless(s21_calc("1m0", &out, x));
+fail_unless(s21_calc("i(2)", &out, x));
+fail_unless(s21_calc("o(2)", &out, x));
+fail_unless(s21_calc("q(-2)", &out, x));
+fail_unless(s21_calc("g(-2)", &out, x));
+fail_unless(s21_calc("l(-2)", &out, x));

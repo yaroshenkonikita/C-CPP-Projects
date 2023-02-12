@@ -1,0 +1,2649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DebitCalc</class>
+ <widget class="QDialog" name="DebitCalc">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>695</width>
+    <height>507</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DebitCalc</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(44, 44, 44);</string>
+  </property>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>331</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QLabel" name="procen_stavka">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Процентная ставка, %</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="summa_vklada">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Сумма вклада, руб.</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="srok_razmesheniya">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Срок размещения</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="stavka_naloga">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Ставка налога, %</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="period_viplat">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Периодичность выплат</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="outs">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>190</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(246, 255, 245);
+background-color: rgb(54, 54, 54);</string>
+   </property>
+   <property name="text">
+    <string> Список частичных выводов</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="depozits">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>190</y>
+     <width>311</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(246, 255, 245);
+background-color: rgb(54, 54, 54);</string>
+   </property>
+   <property name="text">
+    <string> Список пополнений</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="r_widget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>230</y>
+     <width>331</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-family:  'Orbitron', serif;
+background-color: rgb(44, 44, 44);
+color: black;</string>
+   </property>
+   <property name="currentIndex">
+    <number>9</number>
+   </property>
+   <widget class="QWidget" name="r1">
+    <attribute name="title">
+     <string>1</string>
+    </attribute>
+    <widget class="QLabel" name="label_r1_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r1_1">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_1">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r2">
+    <attribute name="title">
+     <string>2</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r3">
+    <attribute name="title">
+     <string>3</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_3">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_3">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r4">
+    <attribute name="title">
+     <string>4</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_4">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r5">
+    <attribute name="title">
+     <string>5</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_5">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_5">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r6">
+    <attribute name="title">
+     <string>6</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_6">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_6">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r7">
+    <attribute name="title">
+     <string>7</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_7">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_7">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r8">
+    <attribute name="title">
+     <string>8</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_8">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_8">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r9">
+    <attribute name="title">
+     <string>9</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_9">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_9">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="r10">
+    <attribute name="title">
+     <string>10</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_r1_10">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_r2_10">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r2_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_r1_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QTabWidget" name="w_widget">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>230</y>
+     <width>331</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Orbitron</family>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(44, 44, 44);
+color: black;</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="w1">
+    <attribute name="title">
+     <string>1</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_1">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_1">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_1">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w2">
+    <attribute name="title">
+     <string>2</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_2">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_2">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w3">
+    <attribute name="title">
+     <string>3</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_3">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_3">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w4">
+    <attribute name="title">
+     <string>4</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_4">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w5">
+    <attribute name="title">
+     <string>5</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_5">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_5">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w6">
+    <attribute name="title">
+     <string>6</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_6">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_6">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w7">
+    <attribute name="title">
+     <string>7</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_7">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_7">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w8">
+    <attribute name="title">
+     <string>8</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_8">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_8">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_8">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w9">
+    <attribute name="title">
+     <string>9</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_9">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_9">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="w10">
+    <attribute name="title">
+     <string>10</string>
+    </attribute>
+    <widget class="QLabel" name="label_w1_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>171</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Номер месяца (1 - 600)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w1_10">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>10</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_w2_10">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_w2_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>58</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(91, 91, 91);
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(246, 255, 245);</string>
+     </property>
+     <property name="text">
+      <string>Сумма</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>400</y>
+     <width>681</width>
+     <height>113</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="1">
+     <widget class="QLabel" name="res_procent_value">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="res_procent">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Начисленные проценты, руб.</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="tax">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Налог, руб.</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="tax_value">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="itog_sum">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string> Сумма на вкладе к концу срока, руб.</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="itog_sum_value">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+      <property name="text">
+       <string>0.0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="result_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>340</y>
+     <width>681</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(54, 54, 54);
+color: rgb(246, 255, 245);</string>
+   </property>
+   <property name="text">
+    <string>Посчитать</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>10</y>
+     <width>341</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="procen_stavka_value">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLineEdit" name="summa_vklada_value">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="2">
+     <widget class="QLineEdit" name="stavka_naloga_value">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="size_of_deposit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: rgb(59, 59, 59);</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Месяцев</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Лет</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="2">
+     <widget class="QComboBox" name="hz_output">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: white;
+background-color: rgb(59, 59, 59);</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Раз в месяц</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Раз в 6 месяцев</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Раз  в 12 месяцев</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>В конце срока депозита</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="srok_razmesheniya_value">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(91, 91, 91);
+color: rgb(246, 255, 245);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QCheckBox" name="kapital_proc">
+      <property name="font">
+       <font>
+        <family>Copperplate</family>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;Copperplate&quot;;
+color: white;</string>
+      </property>
+      <property name="text">
+       <string>Капитализация
+процентов</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>gridLayoutWidget</zorder>
+  <zorder>outs</zorder>
+  <zorder>depozits</zorder>
+  <zorder>w_widget</zorder>
+  <zorder>gridLayoutWidget_2</zorder>
+  <zorder>result_button</zorder>
+  <zorder>r_widget</zorder>
+  <zorder>layoutWidget</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
