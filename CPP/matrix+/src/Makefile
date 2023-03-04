@@ -1,13 +1,10 @@
 .PHONY: all clean test $(SOURCENAME).a
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra -std=c++17 -lstdc++
+CC = g++
+CFLAGS = -Wall -Werror -Wextra -std=c++17
 TFLAGS = -lgtest
 SOURCENAME = matrix_oop
 
-ifeq ($(shell uname -s),Linux)
-	CC = g++
-endif
 
 
 all: $(SOURCENAME).a test
