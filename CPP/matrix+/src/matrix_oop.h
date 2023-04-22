@@ -53,8 +53,8 @@ class Matrix {
   // Matrix multiplication
   [[nodiscard]] Matrix operator*(const Matrix &other) const;
   // Мatrix multiplication by a number
-  [[nodiscard]] friend Matrix operator*(double num, Matrix &other);
-  [[nodiscard]] friend Matrix operator*(Matrix &other, double num);
+  friend Matrix operator*(double num, Matrix &other);
+  friend Matrix operator*(Matrix &other, double num);
 
   // Сopying of values from one matrix to another one
   Matrix &operator=(const Matrix &other);
