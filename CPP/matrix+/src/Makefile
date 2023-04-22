@@ -2,10 +2,8 @@
 
 CC = g++
 CFLAGS = -Wall -Werror -Wextra -std=c++17
-TFLAGS = -lgtest
+TFLAGS = -lgtest -lgtest_main
 SOURCENAME = matrix_oop
-
-
 
 all: $(SOURCENAME).a test
 

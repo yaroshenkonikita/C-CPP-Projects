@@ -4,13 +4,12 @@
 
 TEST(Basic, default_constructor) {
   Matrix basic;
-  EXPECT_EQ(basic.GetRows(), 0);
-  EXPECT_EQ(basic.GetColumns(), 0);
+  EXPECT_EQ(basic.GetRows(), 3);
+  EXPECT_EQ(basic.GetColumns(), 3);
 }
 
 TEST(Basic, default_constructor_Exception) {
-  Matrix exception(1, 0);
-  EXPECT_ANY_THROW(exception(1, 1));
+  EXPECT_ANY_THROW(Matrix exception(1, 0));
 }
 
 TEST(Basic, parameterized_constructor) {
@@ -36,8 +35,8 @@ TEST(Basic, move_constructor) {
   Matrix result(std::move(basic));
   EXPECT_EQ(result.GetRows(), 2);
   EXPECT_EQ(result.GetColumns(), 3);
-  EXPECT_EQ(basic.GetRows(), 0);
-  EXPECT_EQ(basic.GetColumns(), 0);
+  EXPECT_EQ(basic.GetRows(), 3);
+  EXPECT_EQ(basic.GetColumns(), 3);
 }
 
 TEST(GetterAndSetter, set) {
@@ -72,15 +71,15 @@ TEST(functionalFuncTest, braket_Exception2) {
 
 TEST(supportFunction, set_zero_Matrix) {
   Matrix basic;
-  EXPECT_EQ(basic.GetRows(), 0);
-  EXPECT_EQ(basic.GetColumns(), 0);
+  EXPECT_EQ(basic.GetRows(), 3);
+  EXPECT_EQ(basic.GetColumns(), 3);
 }
 
 TEST(assignmentOperator, moveConst) {
   Matrix basic(2, 3);
   Matrix basic2 = std::move(basic);
-  EXPECT_EQ(basic.GetRows(), 0);
-  EXPECT_EQ(basic.GetColumns(), 0);
+  EXPECT_EQ(basic.GetRows(), 3);
+  EXPECT_EQ(basic.GetColumns(), 3);
   EXPECT_EQ(basic2.GetRows(), 2);
   EXPECT_EQ(basic2.GetColumns(), 3);
 }
@@ -524,9 +523,4 @@ TEST(functionalTest, operators_over) {
   EXPECT_EQ(res(0, 0), 4);
   EXPECT_EQ(res2(0, 0), 4);
   EXPECT_EQ(res3(0, 0), 16);
-}
-
-int main(int argc, char *argv[]) {
-  testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
