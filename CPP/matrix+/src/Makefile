@@ -14,8 +14,8 @@ $(SOURCENAME).a: $(SOURCENAME).h
 	@rm $(SOURCENAME).o
 
 
-test: $(SOURCENAME).cc test.cc $(SOURCENAME).h
-	@$(CC) $(CFLAGS) $(SOURCENAME).cc test.cc -o test $(TFLAGS)
+test: test.cc $(SOURCENAME).h
+	@$(CC) $(CFLAGS) test.cc -o test $(TFLAGS)
 	@./test
 
 
@@ -23,5 +23,5 @@ clean:
 	@-rm -rf *.o *.a test
 
 style:
-	@clang-format -style=google -n matrix_oop.cc matrix_oop.h test.cc
+	# @clang-format -style=google -n matrix_oop.cc matrix_oop.h test.cc
 	@clang-format -style=google -i matrix_oop.cc matrix_oop.h test.cc
