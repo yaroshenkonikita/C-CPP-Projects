@@ -34,8 +34,8 @@ class Matrix {
   bool operator!=(const Matrix &other) const;
 
   [[nodiscard]] Matrix operator+(Matrix other) const;
-  [[nodiscard]] Matrix operator-(Matrix other) const;
-  [[nodiscard]] Matrix operator*(Matrix other) const;
+  [[nodiscard]] Matrix operator-(const Matrix &other) const;
+  [[nodiscard]] Matrix operator*(const Matrix &other) const;
 
   Matrix &operator=(const Matrix &other);
   Matrix &operator=(Matrix &&other);
@@ -182,13 +182,15 @@ template <class T>
 }
 
 template <class T>
-[[nodiscard]] Matrix<T> Matrix<T>::operator-(Matrix<T> other) const {
-  return other -= *this;
+[[nodiscard]] Matrix<T> Matrix<T>::operator-(const Matrix<T> &other) const {
+  Matrix<T> copy_this(*this);
+  return copy_this -= other;
 }
 
 template <class T>
-[[nodiscard]] Matrix<T> Matrix<T>::operator*(Matrix<T> other) const {
-  return other *= *this;
+[[nodiscard]] Matrix<T> Matrix<T>::operator*(const Matrix<T> &other) const {
+  Matrix<T> copy_this(*this);
+  return copy_this *= other;
 }
 
 template <class T>
