@@ -22,8 +22,7 @@ class Matrix {
   void SetRows(const std::size_t rows);
   void SetColumns(const std::size_t columns);
 
-  T &operator()(const std::size_t rows, const std::size_t columns);
-  const T &operator()(const std::size_t rows, const std::size_t columns) const;
+  T &operator()(const std::size_t rows, const std::size_t columns) const;
 
   Matrix &operator+=(const Matrix &other);
   Matrix &operator*=(const Matrix &other);
@@ -130,15 +129,7 @@ void Matrix<T>::SetColumns(const std::size_t columns) {
 }
 
 template <class T>
-T &Matrix<T>::operator()(const std::size_t rows, const std::size_t columns) {
-  if (rows >= rows_ || columns >= columns_) {
-    throw std::out_of_range("Index out of range");
-  }
-  return matrix_[rows * columns_ + columns];
-}
-
-template <class T>
-const T &Matrix<T>::operator()(const std::size_t rows,
+T &Matrix<T>::operator()(const std::size_t rows,
                                const std::size_t columns) const {
   if (rows >= rows_ || columns >= columns_) {
     throw std::out_of_range("Index out of range");
